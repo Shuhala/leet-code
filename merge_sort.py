@@ -6,10 +6,11 @@ def merge_sort(arr: List[int]):
         return arr
 
     mid = len(arr) // 2
-    left = merge_sort(arr[mid:])
-    right = merge_sort(arr[:mid])
+    left = merge_sort(arr[mid:])    # sort half
+    right = merge_sort(arr[:mid])   # sort other half
 
     i = j = k = 0
+    # copy data to arr
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
             arr[k] = left[i]
@@ -19,6 +20,7 @@ def merge_sort(arr: List[int]):
             j += 1
         k += 1
 
+    # Checking if any element was left
     while i < len(left):
         arr[k] = left[i]
         i += 1

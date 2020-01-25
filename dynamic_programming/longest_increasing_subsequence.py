@@ -44,10 +44,10 @@ class Solution:
 
 
 solution = Solution()
-assert 4 == solution.lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])
-assert 4 == solution.lengthOfLIS([10, 1, 2, 5, 12, 4])
-assert 2 == solution.lengthOfLIS([-2, -1])
-assert 6 == solution.lengthOfLIS([1, 3, 6, 7, 9, 4, 10, 5, 6])
+assert 4 == solution.lengthOfLISBisect([10, 9, 2, 5, 3, 7, 101, 18])
+assert 4 == solution.lengthOfLISBisect([10, 1, 2, 5, 12, 4])
+assert 2 == solution.lengthOfLISBisect([-2, -1])
+assert 6 == solution.lengthOfLISBisect([1, 3, 6, 7, 9, 4, 10, 5, 6])
 
-estimate_big_o(solution.lengthOfLIS, big_o.datagen.range_n)
+# estimate_big_o(solution.lengthOfLIS, big_o.datagen.range_n)
 # estimate_big_o(solution.lengthOfLISBisect, big_o.datagen.range_n)

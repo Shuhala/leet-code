@@ -6,7 +6,47 @@ from utils import estimate_big_o
 
 
 class Solution:
+
+    def edge_left(self, nums, target):
+        lo = 0
+        hi = len(nums)
+
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if nums[mid] >= target:
+                hi = mid
+            else:
+                lo = mid + 1
+
+        return lo
+
+    def edge_right(self, nums, target):
+        lo = 0
+        hi = len(nums)
+
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if nums[mid] > target:
+                hi = mid
+            else:
+                lo = mid + 1
+
+        return lo
+
+    def searchRange(self, nums: List[int], target: int = 20) -> List[int]:
+        if len(nums) < 1:
+            return [-1, -1]
+
+        left = self.edge_left(nums, target)
+        if left == len(nums) or nums[left] != target:
+            return [-1, -1]
+
+        right = self.edge_right(nums, target)
+
+        return [left, right - 1]
+
     def edge_index(self, nums, target, left):
+        """ Perform the same thing as left and right, but in one function """
         lo = 0
         hi = len(nums)
 
@@ -18,18 +58,6 @@ class Solution:
                 lo = mid + 1
 
         return lo
-
-    def searchRange(self, nums: List[int], target: int = 20) -> List[int]:
-        if len(nums) < 1:
-            return [-1, -1]
-
-        left = self.edge_index(nums, target, True)
-        if left == len(nums) or nums[left] != target:
-            return [-1, -1]
-
-        right = self.edge_index(nums, target, False)
-
-        return [left, right - 1]
 
     def searchRange2(self, nums: List[int], target: int = 20) -> List[int]:
         if len(nums) < 1:
@@ -54,7 +82,7 @@ class Solution:
         if nums[mid] != target:
             return [-1, -1]
 
-        # move i and j to find extremities
+        # move i and j to find edges
         i = j = mid
         while i > 0 and nums[i - 1] == target:
             i -= 1

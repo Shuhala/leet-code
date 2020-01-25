@@ -1,4 +1,3 @@
-
 class KMP:
     @staticmethod
     def partial(pattern):
@@ -45,3 +44,7 @@ p3 = "aab"
 t3 = "aaabaacbaab"
 
 assert (kmp.search(t3, p3) == [1, 8])
+
+p4 = "ie"
+t4 = "aaabaacbaab"
+assert (kmp.search(t4, p4) == [])

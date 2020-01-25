@@ -1,7 +1,8 @@
 from collections import defaultdict, deque
 
 
-class Solution(object):
+class Solution:
+
     def ladderLength(self, beginWord, endWord, wordList):
         if endWord not in wordList or not endWord or not beginWord or not wordList:
             return 0
